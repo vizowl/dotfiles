@@ -1,0 +1,27 @@
+caskroom/cask: unpinned, no formulae/commands
+/usr/local/Homebrew/Library/Taps/caskroom/homebrew-cask (4,364 files, 73.1MB)
+From: https://github.com/caskroom/homebrew-cask
+
+d12frosted/emacs-plus: unpinned, 1 formula
+/usr/local/Homebrew/Library/Taps/d12frosted/homebrew-emacs-plus (76 files, 81.5KB)
+From: https://github.com/d12frosted/homebrew-emacs-plus
+
+gbataille/gba: unpinned, 1 formula
+/usr/local/Homebrew/Library/Taps/gbataille/homebrew-gba (59 files, 16.8MB)
+From: https://github.com/gbataille/homebrew-gba
+
+homebrew/core: unpinned, 4214 formulae
+/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core (4,826 files, 26.2MB)
+From: https://github.com/Homebrew/homebrew-core
+
+homebrew/science: unpinned, 671 formulae
+/usr/local/Homebrew/Library/Taps/homebrew/homebrew-science (1,442 files, 13MB)
+From: https://github.com/Homebrew/homebrew-science
+
+homebrew/services: unpinned, 1 command
+/usr/local/Homebrew/Library/Taps/homebrew/homebrew-services (96 files, 135.5KB)
+From: https://github.com/Homebrew/homebrew-services
+
+neovim/neovim: unpinned, 1 formula
+/usr/local/Homebrew/Library/Taps/neovim/homebrew-neovim (46 files, 44.0KB)
+From: https://github.com/neovim/homebrew-neovim
