@@ -1,12 +1,12 @@
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/chris.knox/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -50,20 +50,22 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git virtualenvwrapper)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%}
-%{$fg_bold[green]%}$(shorter_path)%{$reset_color%} $(/usr/local/bin/gitHUD zsh) $ '
+# export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path)%{$reset_color%} $(/usr/local/bin/gitHUD zsh) $ '
+setopt PROMPT_SUBST
+export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} $(/usr/local/bin/gitHUD zsh) $ '
 
 alias vimr="vimr -s"
 
 export NIX_PATH=$HOME/.config
-source /Users/chris.knox/.nix-profile/etc/profile.d/nix.sh
-source ~/.iterm2_shell_integration.`basename $SHELL`
+
+# source $HOME/.nix-profile/etc/profile.d/nix.sh
+# source ~/.iterm2_shell_integration.`basename $SHELL`
 
 
 # You may need to manually set your language environment

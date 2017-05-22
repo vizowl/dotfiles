@@ -14,8 +14,6 @@ doctl
 eigen
 elm
 elm-format
-elm-new
-emacs-plus
 ffmpeg
 fontconfig
 freetype
