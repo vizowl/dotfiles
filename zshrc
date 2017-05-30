@@ -50,21 +50,22 @@ export ZSH=$HOME/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git virtualenvwrapper)
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 # export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path)%{$reset_color%} $(/usr/local/bin/gitHUD zsh) $ '
-setopt PROMPT_SUBST
 export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} $(/usr/local/bin/gitHUD zsh) $ '
 
 alias vimr="vimr -s"
 
-export NIX_PATH=$HOME/.config
+# export NIX_PATH=$HOME/.config
 
-# source $HOME/.nix-profile/etc/profile.d/nix.sh
+source $HOME/.nix-profile/etc/profile.d/nix.sh
 # source ~/.iterm2_shell_integration.`basename $SHELL`
 
 
@@ -96,3 +97,7 @@ export NIX_PATH=$HOME/.config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="/usr/local/opt/ruby@2.3/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
