@@ -7,6 +7,7 @@ cairo
 cgal
 cmake
 cmdstan
+coreutils
 cscope
 ctags
 dbus
@@ -49,6 +50,7 @@ libffi
 libgcrypt
 libgeotiff
 libgpg-error
+libksba
 liblwgeom
 libmagic
 libmpc
@@ -95,10 +97,8 @@ purescript
 python
 python3
 qt
-qt5
 r
 readline
-ruby
 sfcgal
 shared-mime-info
 sproxy
