@@ -62,10 +62,11 @@ source $ZSH/oh-my-zsh.sh
 export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} $(/usr/local/bin/gitHUD zsh) $ '
 
 alias vimr="vimr -s"
+alias ghci="stack exec ghci"
 
 # export NIX_PATH=$HOME/.config
 
-source $HOME/.nix-profile/etc/profile.d/nix.sh
+# source $HOME/.nix-profile/etc/profile.d/nix.sh
 # source ~/.iterm2_shell_integration.`basename $SHELL`
 
 
@@ -101,3 +102,14 @@ export PATH="/usr/local/opt/ruby@2.3/bin:$PATH"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH=$HOME/.local/bin:$PATH
+
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/chris.knox/nzme/d3-share/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/chris.knox/nzme/d3-share/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/chris.knox/nzme/d3-share/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/chris.knox/nzme/d3-share/node_modules/tabtab/.completions/sls.zsh
