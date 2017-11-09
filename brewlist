@@ -73,6 +73,7 @@ libxml2
 libyaml
 little-cms2
 lua
+luajit
 lzlib
 macvim
 matplotlib
