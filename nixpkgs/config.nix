@@ -1,5 +1,4 @@
 with import <nixpkgs> {};
-with pkgs.python36Packages;
 
 { allowBroken = true;
   allowUnfree = true;
@@ -7,17 +6,29 @@ with pkgs.python36Packages;
   doCheck = false;  
 
   packageOverrides = pkgs: rec {
-    
-    haskellEnv = pkgs.haskell.packages.ghc822.ghcWithPackages
+ 
+    haskell = pkgs.haskell // {
+      packages = pkgs.haskell.packages // {
+        ghc822 = pkgs.haskell.packages.ghc822.override {
+          overrides = self: pkgs: {
+            hoogle = self.callPackage ./hoogle-5.0.16.nix {};
+          };
+        };
+      };
+    };
+   
+    haskellEnv = haskell.packages.ghc822.ghcWithPackages
       (haskellPackages: with haskellPackages; [
         # libraries
+        hoogle
         pandoc stylish-haskell shake hindent 
-        hoogle ghcid aeson-pretty 
+        ghcid aeson-pretty 
         pandoc-sidenote ihaskell ihaskell-blaze 
         ihaskell-charts ihaskell-diagrams 
         ihaskell-hatex ihaskell-juicypixels
         ihaskell-magic ihaskell-plot
         ihaskell-widgets ipython-kernel
+        cabal-install cabal2nix stack2nix stack
       ]);
 
     rEnv = pkgs.rWrapper.override {
@@ -28,6 +39,9 @@ with pkgs.python36Packages;
             RPostgreSQL
             yaml
             optparse
+            lintr
+            libxml2.dev
+            pkgs.perl
             ];
     };
 
@@ -38,7 +52,7 @@ with pkgs.python36Packages;
     } ;  }  ) ;
 
     pyEnv = python36.buildEnv.override {
-        extraLibs = with python36Packages; [ requests jupyter_core ipython matplotlib numpy pandas scipy ];
+        extraLibs = with python36Packages; [ requests jupyter_core ipython matplotlib numpy pandas scipy neovim ];
           ignoreCollisions = true;
     };
   };
