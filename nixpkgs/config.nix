@@ -12,6 +12,7 @@ with import <nixpkgs> {};
         ghc822 = pkgs.haskell.packages.ghc822.override {
           overrides = self: pkgs: {
             hoogle = self.callPackage ./hoogle-5.0.16.nix {};
+            steeloverseer = self.callPackage ./steeloverseer-git.nix {};
           };
         };
       };
@@ -21,6 +22,9 @@ with import <nixpkgs> {};
       (haskellPackages: with haskellPackages; [
         # libraries
         hoogle
+        brittany
+        steeloverseer
+        hlint
         pandoc stylish-haskell shake hindent 
         ghcid aeson-pretty 
         pandoc-sidenote ihaskell ihaskell-blaze 
