@@ -13,10 +13,27 @@ with import <nixpkgs> {};
           overrides = self: pkgs: {
             hoogle = self.callPackage ./hoogle-5.0.16.nix {};
             steeloverseer = self.callPackage ./steeloverseer-git.nix {};
+            inline-r = self.callPackage ./inline-r-0.9.1.nix {};
+            lucid-extras = self.callPackage ./lucid-extras.nix {};
+            plotlyhs = self.callPackage ./plotlyhs.nix {};
+            inliterate = self.callPackage ./inliterate.nix {};
           };
         };
       };
     };
+   
+    ihaskellEnv = haskell.packages.ghc822.ghcWithPackages
+      (haskellPackages: with haskellPackages; [
+        # libraries
+        H
+        inline-r
+        ihaskell-inline-r
+        pandoc-sidenote ihaskell ihaskell-blaze 
+        ihaskell-charts ihaskell-diagrams 
+        ihaskell-hatex ihaskell-juicypixels
+        ihaskell-magic ihaskell-plot
+        ihaskell-widgets ipython-kernel
+      ]);
    
     haskellEnv = haskell.packages.ghc822.ghcWithPackages
       (haskellPackages: with haskellPackages; [
@@ -27,12 +44,14 @@ with import <nixpkgs> {};
         hlint
         pandoc stylish-haskell shake hindent 
         ghcid aeson-pretty 
-        pandoc-sidenote ihaskell ihaskell-blaze 
-        ihaskell-charts ihaskell-diagrams 
-        ihaskell-hatex ihaskell-juicypixels
-        ihaskell-magic ihaskell-plot
-        ihaskell-widgets ipython-kernel
-        cabal-install cabal2nix stack2nix stack
+        pandoc-sidenote
+        inline-r
+        H
+        plotlyhs lucid-extras inliterate
+        cabal-install cabal2nix
+        stack stack2nix
+        nix-prefetch-git
+        pkgs.git
       ]);
 
     rEnv = pkgs.rWrapper.override {
@@ -40,23 +59,36 @@ with import <nixpkgs> {};
             devtools
             tidyverse
             rmarkdown
+            prettydoc
             RPostgreSQL
             yaml
             optparse
             lintr
+            svglite
+            mapproj
+            data_table
             libxml2.dev
             pkgs.perl
             ];
     };
 
-    python36Packages = pkgs.python36Packages.override (oldAttrs: { overrides = self: super: {
-        send2trash = super.send2trash.overrideAttrs ( z : rec { doCheck=false; doInstallCheck = false; } );
-        pandas = super.pandas.overrideAttrs( z : rec{ doCheck=false; doInstallCheck = false;  }  );
-        notebook = super.notebook.overrideAttrs( z : rec{ doCheck=false; doInstallCheck = false;  }  );
-    } ;  }  ) ;
-
+    
     pyEnv = python36.buildEnv.override {
-        extraLibs = with python36Packages; [ requests jupyter_core ipython matplotlib numpy pandas scipy neovim ];
+      extraLibs = with python36Packages; [ 
+        requests
+        jupyter_core
+        jupyter_client
+        jupyter_console
+        pip
+        ipykernel
+        ipython
+        matplotlib
+        numpy
+        pandas
+        scipy
+        neovim
+        xlsx2csv
+        pylint ];
           ignoreCollisions = true;
     };
   };
