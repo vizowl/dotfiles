@@ -59,7 +59,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path)%{$reset_color%} $(/usr/local/bin/gitHUD zsh) $ '
-export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} $(/usr/local/bin/gitHUD zsh) $ '
+export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} $($HOME/.local/bin/githud zsh) $ '
 
 alias vimr="vimr -s"
 alias react-app="create-react-app --scripts-version react-scripts-purescript"

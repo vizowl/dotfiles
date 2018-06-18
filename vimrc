@@ -2,9 +2,18 @@
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 "
+"
+if has('python3')
+    command! -nargs=1 Py py3 <args>
+    set pythonthreedll=/usr/local/Frameworks/Python.framework/Versions/3.6/Python
+    set pythonthreehome=/usr/local/Frameworks/Python.framework/Versions/3.6
+else
+    command! -nargs=1 Py py <args>
+    set pythondll=/usr/local/Frameworks/Python.framework/Versions/2.7/Python
+    set pythonhome=/usr/local/Frameworks/Python.framework/Versions/2.7
+endif
 
-let g:python3_host_prog = '/usr/local/bin/python3'
-call plug#begin('~/.local/share/nvim/site')
+call plug#begin('~/.local/share/vim/site')
 
 Plug 'ElmCast/elm-vim'
 Plug 'jalvesaq/Nvim-R'
@@ -12,11 +21,11 @@ Plug 'lifepillar/pgsql.vim'
 Plug 'ivalkeen/vim-simpledb'
 
 Plug 'vim-scripts/dbext.vim'
+Plug 'idris-hackers/idris-vim'
 
-
-Plug 'parsonsmatt/intero-neovim'
-Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-Plug 'owickstrom/neovim-ghci'
+" Plug 'parsonsmatt/intero-neovim'
+" Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+" Plug 'owickstrom/neovim-ghci'
 " Plug 'neovimhaskell/haskell-vim'
 " Plug 'itchyny/vim-haskell-indent'
 Plug 'vmchale/pointfree'
@@ -82,19 +91,14 @@ Plug 'purescript-contrib/purescript-vim'
 Plug 'frigoeu/psc-ide-vim'
 
 Plug 'khardix/vim-literate'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
+" " (Completion plugin option 2)
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-
-" (Optional) Multi-entry selection UI.
-Plug 'Shougo/denite.nvim'
-
-" (Optional) Completion integration with deoplete.
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" (Optional) Completion integration with nvim-completion-manager.
-Plug 'roxma/nvim-completion-manager'
-
-" (Optional) Showing function signature and inline doc.
 Plug 'Shougo/echodoc.vim'
 
 call plug#end()
@@ -102,58 +106,12 @@ call plug#end()
 syntax on
 filetype plugin indent on
 
-if !has("gui_vimr")
-  set guifont=Source\ Code\ Pro:h13
-endif
-if !has("gui_running")
-  colorscheme OceanicNextLight
-else
-  colorscheme greygull
+colorscheme molokai
+if has("gui_running")
+  set guifont=Fira\ Mono:h13
 endif
 let g:sql_type_default = 'pgsql'
 let g:R_assign = 2
-
-if has('nvim')
-
-augroup interoMaps
-  au!
-  " Maps for intero. Restrict to Haskell buffers so the bindings don't collide.
-
-  " Background process and window management
-  au FileType haskell nnoremap <silent> <leader>is :InteroStart<CR>
-  au FileType haskell nnoremap <silent> <leader>ik :InteroKill<CR>
-
-  " Open intero/GHCi split horizontally
-  au FileType haskell nnoremap <silent> <leader>io :InteroOpen<CR>
-  " Open intero/GHCi split vertically
-  au FileType haskell nnoremap <silent> <leader>iov :InteroOpen<CR><C-W>H
-  au FileType haskell nnoremap <silent> <leader>ih :InteroHide<CR>
-
-  " Reloading (pick one)
-  " Automatically reload on save
-  " au BufWritePost *.hs InteroReload
-  " Manually save and reload
-  au FileType haskell nnoremap <silent> <leader>wr :w \| :InteroReload<CR>
-
-  " Load individual modules
-  au FileType haskell nnoremap <silent> <leader>il :InteroLoadCurrentModule<CR>
-  au FileType haskell nnoremap <silent> <leader>if :InteroLoadCurrentFile<CR>
-
-  " Type-related information
-  " Heads up! These next two differ from the rest.
-  au FileType haskell map <silent> <leader>t <Plug>InteroGenericType
-  au FileType haskell map <silent> <leader>T <Plug>InteroType
-  au FileType haskell nnoremap <silent> <leader>it :InteroTypeInsert<CR>
-
-  " Navigation
-  au FileType haskell nnoremap <silent> <leader>jd :InteroGoToDef<CR>
-
-  " Managing targets
-  " Prompts you to enter targets (no silent):
-  au FileType haskell nnoremap <leader>ist :InteroSetTargets<SPACE>
-augroup END
-
-let g:intero_start_immediately = 0
 
 augroup ghciMaps
   au!
@@ -185,7 +143,6 @@ let g:ghci_command = 'stack ghci'
 " let g:ghci_command_line_options = '--ghci-options fobject-code'
 let g:ghci_start_immediately = 0
 
-endif
 
 
 " CtrlP
@@ -453,7 +410,7 @@ highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
 
 let g:ale_linters = {
-\    'haskell': ['hdevtools', 'hlint', 'hfmt'],
+\    'haskell': ['hlint', 'brittany'],
 \    'javascript': ['eslint']
 \  }
 
@@ -561,3 +518,20 @@ let R_assign = 0
 
 let g:elm_format_autosave = 0
 
+
+let R_in_buffer = 0
+
+" ps PLUGINS
+nm <buffer> <silent> <leader>L :Plist<CR>
+nm <buffer> <silent> <leader>l :Pload!<CR>
+nm <buffer> <silent> <leader>r :Prebuild!<CR>
+nm <buffer> <silent> <leader>f :PaddClause<CR>
+nm <buffer> <silent> <leader>t :PaddType<CR>
+nm <buffer> <silent> <leader>a :Papply<CR>
+nm <buffer> <silent> <leader>A :Papply!<CR>
+nm <buffer> <silent> <leader>C :Pcase!<CR>
+nm <buffer> <silent> <leader>i :Pimport<CR>
+nm <buffer> <silent> <leader>qa :PaddImportQualifications<CR>
+nm <buffer> <silent> <leader>g :Pgoto<CR>
+nm <buffer> <silent> <leader>p :Pursuit<CR>
+nm <buffer> <silent> <leader>T :Ptype<CR>

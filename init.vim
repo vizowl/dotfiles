@@ -14,9 +14,9 @@ Plug 'ivalkeen/vim-simpledb'
 Plug 'vim-scripts/dbext.vim'
 
 
+
 Plug 'parsonsmatt/intero-neovim'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-Plug 'owickstrom/neovim-ghci'
 " Plug 'neovimhaskell/haskell-vim'
 " Plug 'itchyny/vim-haskell-indent'
 Plug 'vmchale/pointfree'
@@ -27,15 +27,16 @@ Plug 'LnL7/vim-nix'
 Plug 'tpope/vim-surround'
 
 Plug 'jremmen/vim-ripgrep'
-" Plug 'nbouscal/vim-stylish-haskell'
 Plug 'alx741/vim-stylishask'
+Plug 'alx741/vim-hindent'
 Plug 'vmchale/hask-replace-vim'
 Plug 'glittershark/vim-hare'
 
 Plug 'Rykka/InstantRst'
 Plug 'Rykka/riv.vim'
 
-" Plug 'pangloss/vim-javascript'
+
+Plug 'pangloss/vim-javascript'
 " Plug 'chemzqm/vim-jsx-improve'
 "Plug 'mxw/vim-jsx'
 Plug 'leshill/vim-json'
@@ -45,7 +46,6 @@ Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'alampros/vim-styled-jsx'
 Plug 'altercation/vim-colors-solarized'
@@ -83,9 +83,10 @@ Plug 'frigoeu/psc-ide-vim'
 
 Plug 'khardix/vim-literate'
 
-
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 " (Optional) Multi-entry selection UI.
 Plug 'Shougo/denite.nvim'
 
@@ -102,14 +103,7 @@ call plug#end()
 syntax on
 filetype plugin indent on
 
-if !has("gui_vimr")
-  set guifont=Source\ Code\ Pro:h13
-endif
-if !has("gui_running")
-  colorscheme OceanicNextLight
-else
-  colorscheme greygull
-endif
+colorscheme molokai
 let g:sql_type_default = 'pgsql'
 let g:R_assign = 2
 
@@ -131,7 +125,7 @@ augroup interoMaps
 
   " Reloading (pick one)
   " Automatically reload on save
-  " au BufWritePost *.hs InteroReload
+  au BufWritePost *.hs InteroReload
   " Manually save and reload
   au FileType haskell nnoremap <silent> <leader>wr :w \| :InteroReload<CR>
 
@@ -153,37 +147,8 @@ augroup interoMaps
   au FileType haskell nnoremap <leader>ist :InteroSetTargets<SPACE>
 augroup END
 
-let g:intero_start_immediately = 0
-
-augroup ghciMaps
-  au!
-  " Maps for ghci. Restrict to Haskell buffers so the bindings don't collide.
-
-  " Background process and window management
-  au FileType haskell nnoremap <silent> <leader>gs :GhciStart<CR>
-  au FileType haskell nnoremap <silent> <leader>gk :GhciKill<CR>
-
-  " Open GHCi split horizontally
-  au FileType haskell nnoremap <silent> <leader>go :GhciOpen<CR>
-  " Open GHCi split vertically
-  au FileType haskell nnoremap <silent> <leader>gov :GhciOpen<CR><C-W>H
-  au FileType haskell nnoremap <silent> <leader>gh :GhciHide<CR>
-
-  " RELOADING (PICK ONE):
-
-  " Automatically reload on save
-  " au BufWritePost *.hs GhciReload
-  " Manually save and reload
-  au FileType haskell nnoremap <silent> <leader>wr :w \| :GhciReload<CR>
-
-  " Load individual modules
-  au FileType haskell nnoremap <silent> <leader>gl :GhciLoadCurrentModule<CR>
-  au FileType haskell nnoremap <silent> <leader>gf :GhciLoadCurrentFile<CR>
-augroup END
-
-let g:ghci_command = 'stack ghci'
-" let g:ghci_command_line_options = '--ghci-options fobject-code'
-let g:ghci_start_immediately = 0
+let g:intero_use_neomake = 0
+let g:intero_type_on_hover = 1
 
 endif
 
@@ -525,8 +490,9 @@ let g:polyglot_disabled = ['elm']
 
 
 autocmd BufRead,BufNewFile *.lhs set filetype=mkdhaskell
+autocmd BufRead,BufNewFile *.sv set filetype=html
 
-autocmd FileType html setlocal formatprg=stylish-haskell
+set noignorecase
 
 " let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
 " let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
@@ -558,6 +524,8 @@ let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie', '--lsp'],
     \ }
 let R_assign = 0
+let R_in_buffer = 0
 
 let g:elm_format_autosave = 0
 
+let g:hindent_on_save = 0
