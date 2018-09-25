@@ -1,6 +1,7 @@
-caskroom/cask
-gbataille/gba
+brewsci/science
+homebrew/cask
+homebrew/cask-fonts
 homebrew/core
-homebrew/science
 homebrew/services
-neovim/neovim
+saulpw/vd
+smallhadroncollider/taskell

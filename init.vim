@@ -3,7 +3,6 @@
 " - Avoid using standard Vim directory names like 'plugin'
 "
 
-let g:python3_host_prog = '/usr/local/bin/python3'
 call plug#begin('~/.local/share/nvim/site')
 
 Plug 'ElmCast/elm-vim'
@@ -13,7 +12,8 @@ Plug 'ivalkeen/vim-simpledb'
 
 Plug 'vim-scripts/dbext.vim'
 
-
+" Plug 'flazz/vim-colorschemes'
+Plug 'yuttie/inkstained-vim'
 
 Plug 'parsonsmatt/intero-neovim'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
@@ -82,6 +82,11 @@ Plug 'purescript-contrib/purescript-vim'
 Plug 'frigoeu/psc-ide-vim'
 
 Plug 'khardix/vim-literate'
+
+Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'vim-pandoc/vim-markdownfootnotes'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -426,7 +431,8 @@ let g:ale_linters = {
 let g:lightline = {
 \ 'colorscheme': 'wombat',
 \ 'active': {
-\   'left': [['mode', 'paste'], ['filename', 'modified']],
+\   'left': [['mode', 'paste'], 
+\            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
 \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
 \ },
 \ 'component_expand': {
@@ -439,6 +445,9 @@ let g:lightline = {
 \   'linter_warnings': 'warning',
 \   'linter_errors': 'error'
 \ },
+\ 'component_function': {
+\     'gitbranch': 'fugitive#head',
+\   }
 \ }
 function! LightlineLinterWarnings() abort
   let l:counts = ale#statusline#Count(bufnr(''))
@@ -525,7 +534,12 @@ let g:LanguageClient_serverCommands = {
     \ }
 let R_assign = 0
 let R_in_buffer = 0
+let R_applescript = 1
+let RStudio_cmd = "/Applications/RStudio.app/Contents/MacOS/RStudio"
 
 let g:elm_format_autosave = 0
 
 let g:hindent_on_save = 0
+let g:hindent_command = "stack exec -- hindent"
+let g:stylishask_on_save = 0
+let g:hindent_command = "stack exec -- stylish-haskell"
