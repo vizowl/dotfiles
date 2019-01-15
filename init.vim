@@ -13,11 +13,12 @@ Plug 'ivalkeen/vim-simpledb'
 Plug 'vim-scripts/dbext.vim'
 
 " Plug 'flazz/vim-colorschemes'
+Plug 'nightsense/rusticated'
 Plug 'yuttie/inkstained-vim'
 
 Plug 'parsonsmatt/intero-neovim'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-" Plug 'neovimhaskell/haskell-vim'
+Plug 'neovimhaskell/haskell-vim'
 " Plug 'itchyny/vim-haskell-indent'
 Plug 'vmchale/pointfree'
 
@@ -39,6 +40,7 @@ Plug 'Rykka/riv.vim'
 Plug 'pangloss/vim-javascript'
 " Plug 'chemzqm/vim-jsx-improve'
 "Plug 'mxw/vim-jsx'
+Plug 'maksimr/vim-jsbeautify'
 Plug 'leshill/vim-json'
 Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 
@@ -83,10 +85,10 @@ Plug 'frigoeu/psc-ide-vim'
 
 Plug 'khardix/vim-literate'
 
-Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc'
 " Plug 'vim-pandoc/vim-pandoc-syntax'
 " Plug 'vim-pandoc/vim-rmarkdown'
-Plug 'vim-pandoc/vim-markdownfootnotes'
+" Plug 'vim-pandoc/vim-markdownfootnotes'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -108,7 +110,6 @@ call plug#end()
 syntax on
 filetype plugin indent on
 
-colorscheme molokai
 let g:sql_type_default = 'pgsql'
 let g:R_assign = 2
 
@@ -324,7 +325,8 @@ set formatoptions=tcqn1     " t - autowrap normal text
                             " n - autowrap lists
                             " 1 - break _before_ single-letter words
                             " 2 - use indenting from 2nd line of para
-set hidden                  " Don't prompt to save hidden windows until exit
+" set hidden                  " Don't prompt to save hidden windows until exit
+
 set history=200             " How many lines of history to save
 set hlsearch                " Hilight searching
 set ignorecase              " Case insensitive
@@ -389,6 +391,44 @@ let maplocalleader = ","
 " FZF (replaces Ctrl-P, FuzzyFinder and Command-T)
 set rtp+=/usr/local/opt/fzf
 set rtp+=~/.fzf
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Default fzf layout
+" - down / up / left / right
+let g:fzf_layout = { 'down': '~40%' }
+
+" In Neovim, you can set up fzf window using a Vim command
+let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': '-tabnew' }
+let g:fzf_layout = { 'window': '10split enew' }
+
+" Customize fzf colors to match your color scheme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+
 nmap ; :Buffers<CR>
 nmap <Leader>r :Tags<CR>
 nmap <Leader>f :GFiles<CR>
@@ -543,3 +583,91 @@ let g:hindent_on_save = 0
 let g:hindent_command = "stack exec -- hindent"
 let g:stylishask_on_save = 0
 let g:hindent_command = "stack exec -- stylish-haskell"
+
+colorscheme rusticated
+
+highlight Normal ctermbg=none
+highlight SpecialKey ctermbg=none
+highlight Directory ctermbg=none
+highlight ErrorMsg ctermbg=none
+highlight IncSearch ctermbg=none
+highlight Search ctermbg=none
+highlight MoreMsg ctermbg=none
+highlight ModeMsg ctermbg=none
+highlight LineNr ctermbg=none
+highlight CursorLineNr ctermbg=none
+highlight Question ctermbg=none
+highlight StatusLine ctermbg=none
+highlight StatusLineNC ctermbg=none
+highlight VertSplit ctermbg=none
+highlight Title ctermbg=none
+highlight Visual ctermbg=none
+highlight WarningMsg ctermbg=none
+highlight WildMenu ctermbg=none
+highlight Folded ctermbg=none
+highlight FoldColumn ctermbg=none
+highlight DiffAdd ctermbg=none
+highlight DiffChange ctermbg=none
+highlight DiffDelete ctermbg=none
+highlight DiffText ctermbg=none
+highlight SignColumn ctermbg=none
+highlight Conceal ctermbg=none
+highlight SpellBad ctermbg=none
+highlight SpellCap ctermbg=none
+highlight SpellRare ctermbg=none
+highlight SpellLocal ctermbg=none
+highlight Pmenu ctermbg=none
+highlight PmenuSel ctermbg=none
+highlight PmenuSbar ctermbg=none
+highlight PmenuThumb ctermbg=none
+highlight TabLine ctermbg=none
+highlight TabLineSel ctermbg=none
+highlight TabLineFill ctermbg=none
+highlight CursorColumn ctermbg=none
+highlight CursorLine ctermbg=none
+highlight ColorColumn ctermbg=none
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight Cursor ctermbg=none
+highlight MatchParen ctermbg=none
+highlight NvimInternalError ctermbg=none
+highlight Error ctermbg=none
+highlight PreProc ctermbg=none
+highlight Todo ctermbg=none
+highlight Include ctermbg=none
+highlight VisualNOS ctermbg=none
+highlight SpellErrors ctermbg=none
+highlight GitGutterAddDefault ctermbg=none
+highlight GitGutterChangeDefault ctermbg=none
+highlight GitGutterDeleteDefault ctermbg=none
+highlight GitGutterAddInvisible ctermbg=none
+highlight GitGutterChangeInvisible ctermbg=none
+highlight GitGutterDeleteInvisible ctermbg=none
+highlight QuickFixLine ctermbg=none
+highlight fzf1 ctermbg=none
+highlight fzf2 ctermbg=none
+highlight fzf3 ctermbg=none
+highlight diffAdded ctermbg=none
+highlight diffRemoved ctermbg=none
+highlight StatusLineTerm ctermbg=none
+highlight StatusLineTermNC ctermbg=none
+highlight ToolbarButton ctermbg=none
+highlight ToolbarLine ctermbg=none
+highlight TooLong ctermbg=none
+highlight DiffChanged ctermbg=none
+
+
+" Js Beautify
+"
+".vimrc
+map <c-f> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json
+autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" for jsx
+autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>

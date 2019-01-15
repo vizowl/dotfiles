@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -59,15 +59,17 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%} %{$fg_bold[green]%}$(shorter_path)%{$reset_color%} $(/usr/local/bin/gitHUD zsh) $ '
-export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} $($HOME/.local/bin/githud zsh) $ '
+# export PROMPT='%{$fg_bold[white]%}%T%{$reset_color%}%{$fg[cyan]%} %n%{$reset_color%} %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} $($HOME/.local/bin/githud zsh) $ '
 
 alias vimr="vimr -s"
 alias react-app="create-react-app --scripts-version react-scripts-purescript"
-# alias ghci="stack exec ghci"
+alias ghci="stack exec ghci"
+alias ghc="stack exec ghc"
+alias runghc="stack exec runghc"
 
 # export NIX_PATH=$HOME/.config
 
-# source $HOME/.nix-profile/etc/profile.d/nix.sh
+source $HOME/.nix-profile/etc/profile.d/nix.sh
 # source ~/.iterm2_shell_integration.`basename $SHELL`
 
 

@@ -5,7 +5,6 @@ awscli
 bash
 bfg
 boost
-cabal-install
 cairo
 cgal
 cmdstan
@@ -25,7 +24,6 @@ gdal
 gdbm
 geos
 gettext
-ghc
 giflib
 glib
 gmp
@@ -94,7 +92,6 @@ pkg-config
 poppler
 postgis
 postgresql
-postgrest
 proj
 pwgen
 python
@@ -105,7 +102,6 @@ readline
 ruby
 sfcgal
 sqlite
-taskell
 tbb
 the_silver_searcher
 tippecanoe
