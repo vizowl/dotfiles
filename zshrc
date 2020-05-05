@@ -50,7 +50,11 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  virtualenvwrapper
+  #nvm
+)
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 
@@ -63,13 +67,13 @@ source $ZSH/oh-my-zsh.sh
 
 alias vimr="vimr -s"
 alias react-app="create-react-app --scripts-version react-scripts-purescript"
-alias ghci="stack exec ghci"
-alias ghc="stack exec ghc"
-alias runghc="stack exec runghc"
+# alias ghci="stack exec ghci"
+# alias ghc="stack exec ghc"
+# alias runghc="stack exec runghc"
 
 # export NIX_PATH=$HOME/.config
 
-source $HOME/.nix-profile/etc/profile.d/nix.sh
+# source $HOME/.nix-profile/etc/profile.d/nix.sh
 # source ~/.iterm2_shell_integration.`basename $SHELL`
 
 
@@ -100,7 +104,6 @@ source $HOME/.nix-profile/etc/profile.d/nix.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="$PATH:$HOME/.rvm/bin"
 export PATH=$HOME/.cabal/bin:$HOME/.local/bin:$PATH
 
 # tabtab source for serverless package
@@ -133,5 +136,12 @@ if _has fzf && _has ag; then
   '
 fi
 
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export NODE_PATH=$(pwd)/node_modules
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true

@@ -1,7 +1,6 @@
-brewsci/science
 homebrew/cask
-homebrew/cask-fonts
 homebrew/core
 homebrew/services
+mapbox/cli
+mike-engel/jwt-cli
 saulpw/vd
-smallhadroncollider/taskell

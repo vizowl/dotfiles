@@ -6,78 +6,87 @@
 call plug#begin('~/.local/share/nvim/site')
 
 Plug 'ElmCast/elm-vim'
-Plug 'jalvesaq/Nvim-R'
 Plug 'lifepillar/pgsql.vim'
-Plug 'ivalkeen/vim-simpledb'
+" Plug 'ivalkeen/vim-simpledb'
 
-Plug 'vim-scripts/dbext.vim'
+" Plug 'vim-scripts/dbext.vim'
 
+" Plug 'ayu-theme/ayu-vim'
+" Plug 'morhetz/gruvbox'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'drewtempelmeyer/palenight.vim'
 " Plug 'flazz/vim-colorschemes'
-Plug 'nightsense/rusticated'
-Plug 'yuttie/inkstained-vim'
+" Plug 'felixhummel/setcolors.vim'
+" Plug 'nightsense/rusticated'
+" Plug 'yuttie/inkstained-vim'
+" Plug 'trevordmiller/nova-vim'
+" Plug 'cliuj/vim-dark-meadow'
+Plug 'wadackel/vim-dogrun'
 
-Plug 'parsonsmatt/intero-neovim'
+" Plug 'parsonsmatt/intero-neovim'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-Plug 'neovimhaskell/haskell-vim'
+" Plug 'sdiehl/vim-ormolu'
+" Plug 'neovimhaskell/haskell-vim'
 " Plug 'itchyny/vim-haskell-indent'
-Plug 'vmchale/pointfree'
+" Plug 'vmchale/pointfree'
 
-Plug 'nightsense/seabird'
-Plug 'mhartington/oceanic-next'
-Plug 'LnL7/vim-nix'
-Plug 'tpope/vim-surround'
+" Plug 'nightsense/seabird'
+" Plug 'mhartington/oceanic-next'
+" Plug 'LnL7/vim-nix'
 
-Plug 'jremmen/vim-ripgrep'
+" Plug 'jremmen/vim-ripgrep'
 Plug 'alx741/vim-stylishask'
 Plug 'alx741/vim-hindent'
-Plug 'vmchale/hask-replace-vim'
-Plug 'glittershark/vim-hare'
+" Plug 'vmchale/hask-replace-vim'
+" Plug 'glittershark/vim-hare'
 
-Plug 'Rykka/InstantRst'
-Plug 'Rykka/riv.vim'
+" Plug 'Rykka/InstantRst'
+" Plug 'Rykka/riv.vim'
 
 
 Plug 'pangloss/vim-javascript'
+" Plug 'maxmellon/vim-jsx-pretty'
 " Plug 'chemzqm/vim-jsx-improve'
-"Plug 'mxw/vim-jsx'
-Plug 'maksimr/vim-jsbeautify'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+" Plug 'mxw/vim-jsx'
+" Plug 'maksimr/vim-jsbeautify'
 Plug 'leshill/vim-json'
-Plug 'flowtype/vim-flow', { 'for': 'javascript' }
+" Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 
 " Markdown
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 
 Plug 'airblade/vim-gitgutter'
-Plug 'alampros/vim-styled-jsx'
-Plug 'altercation/vim-colors-solarized'
-Plug 'ap/vim-css-color'
-Plug 'docunext/closetag.vim'
-Plug 'ervandew/supertab'
+" Plug 'alampros/vim-styled-jsx'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'ap/vim-css-color'
+" Plug 'docunext/closetag.vim'
+" Plug 'ervandew/supertab'
 Plug 'haya14busa/incsearch.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/goyo.vim'
 Plug 'mileszs/ack.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'qpkorr/vim-bufkill'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'statico/vim-inform7'
-Plug 'tomasr/molokai'
+" Plug 'tomasr/molokai'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-pathogen'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rhubarb'
+" Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'wellle/targets.vim'
 
 Plug 'purescript-contrib/purescript-vim'
@@ -86,24 +95,33 @@ Plug 'frigoeu/psc-ide-vim'
 Plug 'khardix/vim-literate'
 
 " Plug 'vim-pandoc/vim-pandoc'
-" Plug 'vim-pandoc/vim-pandoc-syntax'
-" Plug 'vim-pandoc/vim-rmarkdown'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
 " Plug 'vim-pandoc/vim-markdownfootnotes'
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-" (Optional) Multi-entry selection UI.
-Plug 'Shougo/denite.nvim'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'jalvesaq/Nvim-R'
+Plug 'gaalcaras/ncm-R'
+
+Plug 'chrisbra/Colorizer'
+
+Plug 'sbdchd/neoformat'
+
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+" " (Optional) Multi-entry selection UI.
+" Plug 'Shougo/denite.nvim'
 
 " (Optional) Completion integration with deoplete.
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" (Optional) Completion integration with nvim-completion-manager.
-Plug 'roxma/nvim-completion-manager'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" " (Optional) Completion integration with nvim-completion-manager.
+" " Plug 'roxma/nvim-completion-manager'
 
 " (Optional) Showing function signature and inline doc.
-Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/echodoc.vim'
 
 call plug#end()
 
@@ -111,6 +129,10 @@ syntax on
 filetype plugin indent on
 
 let g:sql_type_default = 'pgsql'
+let g:simpledb_use_default_keybindings=0
+vnoremap <buffer> <c-q> :SimpleDBExecuteSql<cr>
+nnoremap <buffer> <c-q> m':SimpleDBExecuteSql <cr>g`'
+nnoremap <buffer> <leader><c-q> m':'{,'}SimpleDBExecuteSql<cr>g`'
 let g:R_assign = 2
 
 if has('nvim')
@@ -131,7 +153,7 @@ augroup interoMaps
 
   " Reloading (pick one)
   " Automatically reload on save
-  au BufWritePost *.hs InteroReload
+  " au BufWritePost *.hs InteroReload
   " Manually save and reload
   au FileType haskell nnoremap <silent> <leader>wr :w \| :InteroReload<CR>
 
@@ -155,6 +177,7 @@ augroup END
 
 let g:intero_use_neomake = 0
 let g:intero_type_on_hover = 1
+let g:intero_start_immediately = 0
 
 endif
 
@@ -169,7 +192,7 @@ let g:javascript_plugin_flow = 1
 " Markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_math = 1
+let g:vim_markdown_math = 0
 
 set autoread
 set noignorecase
@@ -325,7 +348,7 @@ set formatoptions=tcqn1     " t - autowrap normal text
                             " n - autowrap lists
                             " 1 - break _before_ single-letter words
                             " 2 - use indenting from 2nd line of para
-" set hidden                  " Don't prompt to save hidden windows until exit
+set hidden                  " Don't prompt to save hidden windows until exit
 
 set history=200             " How many lines of history to save
 set hlsearch                " Hilight searching
@@ -406,27 +429,25 @@ let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_layout = { 'window': '-tabnew' }
 let g:fzf_layout = { 'window': '10split enew' }
 
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using Vim function
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 
 nmap ; :Buffers<CR>
@@ -463,7 +484,7 @@ highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
 
 let g:ale_linters = {
-\    'haskell': ['hdevtools', 'hlint', 'hfmt'],
+\    'haskell': ['brittany', 'hlint', 'hfmt'],
 \    'javascript': ['eslint']
 \  }
 
@@ -471,7 +492,7 @@ let g:ale_linters = {
 let g:lightline = {
 \ 'colorscheme': 'wombat',
 \ 'active': {
-\   'left': [['mode', 'paste'], 
+\   'left': [['mode', 'paste'],
 \            [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
 \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
 \ },
@@ -551,7 +572,7 @@ set noignorecase
 " let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
 " let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
 
-" tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
 " au BufNewFile,BufRead *.hs nmap pf <Plug>Pointfree
 
 autocmd BufWinEnter,WinEnter term://* startinsert
@@ -572,89 +593,20 @@ map <C-l> <C-w>l
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie', '--lsp'],
     \ }
+
 let R_assign = 0
-let R_in_buffer = 0
-let R_applescript = 1
+" let R_in_buffer = 0
+let r_indent_align_args = 0
 let RStudio_cmd = "/Applications/RStudio.app/Contents/MacOS/RStudio"
+
+set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
 let g:elm_format_autosave = 0
 
 let g:hindent_on_save = 0
 let g:hindent_command = "stack exec -- hindent"
-let g:stylishask_on_save = 0
+let g:stylishask_on_save = 1
 let g:hindent_command = "stack exec -- stylish-haskell"
-
-colorscheme rusticated
-
-highlight Normal ctermbg=none
-highlight SpecialKey ctermbg=none
-highlight Directory ctermbg=none
-highlight ErrorMsg ctermbg=none
-highlight IncSearch ctermbg=none
-highlight Search ctermbg=none
-highlight MoreMsg ctermbg=none
-highlight ModeMsg ctermbg=none
-highlight LineNr ctermbg=none
-highlight CursorLineNr ctermbg=none
-highlight Question ctermbg=none
-highlight StatusLine ctermbg=none
-highlight StatusLineNC ctermbg=none
-highlight VertSplit ctermbg=none
-highlight Title ctermbg=none
-highlight Visual ctermbg=none
-highlight WarningMsg ctermbg=none
-highlight WildMenu ctermbg=none
-highlight Folded ctermbg=none
-highlight FoldColumn ctermbg=none
-highlight DiffAdd ctermbg=none
-highlight DiffChange ctermbg=none
-highlight DiffDelete ctermbg=none
-highlight DiffText ctermbg=none
-highlight SignColumn ctermbg=none
-highlight Conceal ctermbg=none
-highlight SpellBad ctermbg=none
-highlight SpellCap ctermbg=none
-highlight SpellRare ctermbg=none
-highlight SpellLocal ctermbg=none
-highlight Pmenu ctermbg=none
-highlight PmenuSel ctermbg=none
-highlight PmenuSbar ctermbg=none
-highlight PmenuThumb ctermbg=none
-highlight TabLine ctermbg=none
-highlight TabLineSel ctermbg=none
-highlight TabLineFill ctermbg=none
-highlight CursorColumn ctermbg=none
-highlight CursorLine ctermbg=none
-highlight ColorColumn ctermbg=none
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-highlight Cursor ctermbg=none
-highlight MatchParen ctermbg=none
-highlight NvimInternalError ctermbg=none
-highlight Error ctermbg=none
-highlight PreProc ctermbg=none
-highlight Todo ctermbg=none
-highlight Include ctermbg=none
-highlight VisualNOS ctermbg=none
-highlight SpellErrors ctermbg=none
-highlight GitGutterAddDefault ctermbg=none
-highlight GitGutterChangeDefault ctermbg=none
-highlight GitGutterDeleteDefault ctermbg=none
-highlight GitGutterAddInvisible ctermbg=none
-highlight GitGutterChangeInvisible ctermbg=none
-highlight GitGutterDeleteInvisible ctermbg=none
-highlight QuickFixLine ctermbg=none
-highlight fzf1 ctermbg=none
-highlight fzf2 ctermbg=none
-highlight fzf3 ctermbg=none
-highlight diffAdded ctermbg=none
-highlight diffRemoved ctermbg=none
-highlight StatusLineTerm ctermbg=none
-highlight StatusLineTermNC ctermbg=none
-highlight ToolbarButton ctermbg=none
-highlight ToolbarLine ctermbg=none
-highlight TooLong ctermbg=none
-highlight DiffChanged ctermbg=none
 
 
 " Js Beautify
@@ -671,3 +623,39 @@ autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+set title
+
+" set background=light
+set termguicolors     " enable true colors support
+" let ayucolor="light"  " for light version of theme
+" let ayucolor="mirage" " for mirage version of theme
+" let ayucolor="dark"   " for dark version of theme
+" colorscheme ayu
+" colorscheme dark-meadow
+set t_Co=256
+set background=dark
+colorscheme dogrun
+
+
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+
+au BufNewFile,BufRead *.Rmd set filetype=rmd
+
+let rrst_syn_hl_chunk = 1
+let rmd_syn_hl_chunk = 1
+
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\}
+
+let g:ale_fix_on_save = 1
+
+
+
+let g:colorizer_auto_filetype='css,html,js'
+let g:colorizer_skip_comments = 1
