@@ -5,12 +5,12 @@
 
 call plug#begin('~/.local/share/nvim/site')
 
-Plug 'ElmCast/elm-vim'
 Plug 'lifepillar/pgsql.vim'
 " Plug 'ivalkeen/vim-simpledb'
 
 " Plug 'vim-scripts/dbext.vim'
 
+" THEMES
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'morhetz/gruvbox'
 " Plug 'NLKNguyen/papercolor-theme'
@@ -21,28 +21,15 @@ Plug 'lifepillar/pgsql.vim'
 " Plug 'yuttie/inkstained-vim'
 " Plug 'trevordmiller/nova-vim'
 " Plug 'cliuj/vim-dark-meadow'
-Plug 'wadackel/vim-dogrun'
-
-" Plug 'parsonsmatt/intero-neovim'
-Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-" Plug 'sdiehl/vim-ormolu'
-" Plug 'neovimhaskell/haskell-vim'
-" Plug 'itchyny/vim-haskell-indent'
-" Plug 'vmchale/pointfree'
-
 " Plug 'nightsense/seabird'
 " Plug 'mhartington/oceanic-next'
+Plug 'wadackel/vim-dogrun'
+
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 " Plug 'LnL7/vim-nix'
 
-" Plug 'jremmen/vim-ripgrep'
 Plug 'alx741/vim-stylishask'
 Plug 'alx741/vim-hindent'
-" Plug 'vmchale/hask-replace-vim'
-" Plug 'glittershark/vim-hare'
-
-" Plug 'Rykka/InstantRst'
-" Plug 'Rykka/riv.vim'
-
 
 Plug 'pangloss/vim-javascript'
 " Plug 'maxmellon/vim-jsx-pretty'
@@ -74,7 +61,6 @@ Plug 'qpkorr/vim-bufkill'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'sheerun/vim-polyglot'
-Plug 'statico/vim-inform7'
 " Plug 'tomasr/molokai'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -86,44 +72,19 @@ Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
-Plug 'dense-analysis/ale'
-Plug 'wellle/targets.vim'
 
-Plug 'purescript-contrib/purescript-vim'
-Plug 'frigoeu/psc-ide-vim'
+" Syntax highlighting
+Plug 'andys8/vim-elm-syntax', { 'for': ['elm'] }
 
-Plug 'khardix/vim-literate'
+" Language server client
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-" Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-rmarkdown'
-" Plug 'vim-pandoc/vim-markdownfootnotes'
+" REPL
+Plug 'kassio/neoterm'
 
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'jalvesaq/Nvim-R'
-Plug 'gaalcaras/ncm-R'
-
-Plug 'chrisbra/Colorizer'
-
-Plug 'sbdchd/neoformat'
-
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
-" " (Optional) Multi-entry selection UI.
-" Plug 'Shougo/denite.nvim'
-
-" (Optional) Completion integration with deoplete.
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" " (Optional) Completion integration with nvim-completion-manager.
-" " Plug 'roxma/nvim-completion-manager'
-
-" (Optional) Showing function signature and inline doc.
-" Plug 'Shougo/echodoc.vim'
 
 call plug#end()
+
 
 syntax on
 filetype plugin indent on
@@ -134,53 +95,6 @@ vnoremap <buffer> <c-q> :SimpleDBExecuteSql<cr>
 nnoremap <buffer> <c-q> m':SimpleDBExecuteSql <cr>g`'
 nnoremap <buffer> <leader><c-q> m':'{,'}SimpleDBExecuteSql<cr>g`'
 let g:R_assign = 2
-
-if has('nvim')
-
-augroup interoMaps
-  au!
-  " Maps for intero. Restrict to Haskell buffers so the bindings don't collide.
-
-  " Background process and window management
-  au FileType haskell nnoremap <silent> <leader>is :InteroStart<CR>
-  au FileType haskell nnoremap <silent> <leader>ik :InteroKill<CR>
-
-  " Open intero/GHCi split horizontally
-  au FileType haskell nnoremap <silent> <leader>io :InteroOpen<CR>
-  " Open intero/GHCi split vertically
-  au FileType haskell nnoremap <silent> <leader>iov :InteroOpen<CR><C-W>H
-  au FileType haskell nnoremap <silent> <leader>ih :InteroHide<CR>
-
-  " Reloading (pick one)
-  " Automatically reload on save
-  " au BufWritePost *.hs InteroReload
-  " Manually save and reload
-  au FileType haskell nnoremap <silent> <leader>wr :w \| :InteroReload<CR>
-
-  " Load individual modules
-  au FileType haskell nnoremap <silent> <leader>il :InteroLoadCurrentModule<CR>
-  au FileType haskell nnoremap <silent> <leader>if :InteroLoadCurrentFile<CR>
-
-  " Type-related information
-  " Heads up! These next two differ from the rest.
-  au FileType haskell map <silent> <leader>t <Plug>InteroGenericType
-  au FileType haskell map <silent> <leader>T <Plug>InteroType
-  au FileType haskell nnoremap <silent> <leader>it :InteroTypeInsert<CR>
-
-  " Navigation
-  au FileType haskell nnoremap <silent> <leader>jd :InteroGoToDef<CR>
-
-  " Managing targets
-  " Prompts you to enter targets (no silent):
-  au FileType haskell nnoremap <leader>ist :InteroSetTargets<SPACE>
-augroup END
-
-let g:intero_use_neomake = 0
-let g:intero_type_on_hover = 1
-let g:intero_start_immediately = 0
-
-endif
-
 
 " CtrlP
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -349,6 +263,7 @@ set formatoptions=tcqn1     " t - autowrap normal text
                             " 1 - break _before_ single-letter words
                             " 2 - use indenting from 2nd line of para
 set hidden                  " Don't prompt to save hidden windows until exit
+set ttyfast
 
 set history=200             " How many lines of history to save
 set hlsearch                " Hilight searching
@@ -477,17 +392,6 @@ nnoremap ,<CR> :noh<CR>
 " Highlight YAML frontmatter in Markdown files
 let g:vim_markdown_frontmatter = 1
 
-" ALE
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
-
-let g:ale_linters = {
-\    'haskell': ['brittany', 'hlint', 'hfmt'],
-\    'javascript': ['eslint']
-\  }
-
 " Lightline
 let g:lightline = {
 \ 'colorscheme': 'wombat',
@@ -530,30 +434,12 @@ function! LightlineLinterOK() abort
 endfunction
 
 " Update and show lightline but only if it's visible (e.g., not in Goyo)
-autocmd User ALELint call s:MaybeUpdateLightline()
-function! s:MaybeUpdateLightline()
-  if exists('#lightline')
-    call lightline#update()
-  end
-endfunction
-
-" Custom mode for distraction-free editing
-function! ProseMode()
-  call goyo#execute(0, [])
-  set spell noci nosi noai nolist noshowmode noshowcmd
-  set complete+=s
-  set bg=light
-  if !has('gui_running')
-    let g:solarized_termcolors=256
-  endif
-  colorscheme greygull
-endfunction
-command! ProseMode call ProseMode()
-
-
-" ALE
-nmap [r <Plug>(ale_previous_wrap)
-nmap ]r <Plug>(ale_next_wrap)
+" autocmd User ALELint call s:MaybeUpdateLightline()
+" function! s:MaybeUpdateLightline()
+"   if exists('#lightline')
+"     call lightline#update()
+"   end
+" endfunction
 
 " polyglot disables
 let g:polyglot_disabled = ['elm']
@@ -647,15 +533,17 @@ au BufNewFile,BufRead *.Rmd set filetype=rmd
 let rrst_syn_hl_chunk = 1
 let rmd_syn_hl_chunk = 1
 
-
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['prettier', 'eslint'],
-\}
-
-let g:ale_fix_on_save = 1
-
-
-
 let g:colorizer_auto_filetype='css,html,js'
 let g:colorizer_skip_comments = 1
+
+
+" Keybindings
+nmap <leader>r <Plug>(coc-rename)
+nmap <silent> <leader>s <Plug>(coc-fix-current)
+nmap <silent> <leader>S <Plug>(coc-codeaction)
+nmap <silent> <leader>a <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>A <Plug>(coc-diagnostic-next-error)
+nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>g :call CocAction('doHover')<CR>
+nmap <silent> <leader>u <Plug>(coc-references)
+nmap <silent> <leader>p :call CocActionAsync('format')<CR>
