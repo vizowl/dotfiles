@@ -23,10 +23,14 @@ Plug 'lifepillar/pgsql.vim'
 " Plug 'cliuj/vim-dark-meadow'
 " Plug 'nightsense/seabird'
 " Plug 'mhartington/oceanic-next'
-Plug 'wadackel/vim-dogrun'
+" Plug 'wadackel/vim-dogrun'
+Plug 'reedes/vim-colors-pencil'
+Plug 'reedes/vim-pencil'
 
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 " Plug 'LnL7/vim-nix'
+
+Plug 'jalvesaq/Nvim-R'
 
 Plug 'alx741/vim-stylishask'
 Plug 'alx741/vim-hindent'
@@ -42,7 +46,6 @@ Plug 'leshill/vim-json'
 
 " Markdown
 Plug 'godlygeek/tabular'
-" Plug 'plasticboy/vim-markdown'
 
 Plug 'airblade/vim-gitgutter'
 " Plug 'alampros/vim-styled-jsx'
@@ -51,9 +54,11 @@ Plug 'airblade/vim-gitgutter'
 " Plug 'docunext/closetag.vim'
 " Plug 'ervandew/supertab'
 Plug 'haya14busa/incsearch.vim'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf.vim'
-" Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'mileszs/ack.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'qpkorr/vim-bufkill'
@@ -72,6 +77,7 @@ Plug 'tpope/vim-repeat'
 " Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-markdown'
 
 " Syntax highlighting
 Plug 'andys8/vim-elm-syntax', { 'for': ['elm'] }
@@ -379,6 +385,9 @@ let g:gitgutter_sign_modified = '∙'
 let g:gitgutter_sign_removed = '∙'
 let g:gitgutter_sign_modified_removed = '∙'
 
+" Airline
+let g:airline_theme = 'pencil'
+
 " SuperTab
 let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
@@ -483,7 +492,8 @@ let g:LanguageClient_serverCommands = {
 let R_assign = 0
 " let R_in_buffer = 0
 let r_indent_align_args = 0
-let RStudio_cmd = "/Applications/RStudio.app/Contents/MacOS/RStudio"
+" let RStudio_cmd = '/Applications/RStudio.app/Contents/MacOS/RStudio'
+let rout_follow_colorscheme = 1
 
 set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
@@ -520,8 +530,8 @@ set termguicolors     " enable true colors support
 " colorscheme ayu
 " colorscheme dark-meadow
 set t_Co=256
-set background=dark
-colorscheme dogrun
+set background=light
+colorscheme pencil
 
 
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
@@ -547,3 +557,4 @@ nmap <silent> <leader>d <Plug>(coc-definition)
 nmap <silent> <leader>g :call CocAction('doHover')<CR>
 nmap <silent> <leader>u <Plug>(coc-references)
 nmap <silent> <leader>p :call CocActionAsync('format')<CR>
+
